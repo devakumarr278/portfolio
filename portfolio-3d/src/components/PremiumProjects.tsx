@@ -1,4 +1,19 @@
 import { useState } from "react";
+import project1 from "../assets/project/1.png";
+import project2 from "../assets/project/2.png";
+import project3 from "../assets/project/3.png";
+import project4 from "../assets/project/4.png";
+import project5 from "../assets/project/5.png";
+import project6 from "../assets/project/6.png";
+import project7 from "../assets/project/7.png";
+import project8 from "../assets/project/8.png";
+import project9 from "../assets/project/9.png";
+import project10 from "../assets/project/10.png";
+import instaclone from "../assets/project/instaclone/insta.png";
+import portfolio1 from "../assets/project/portfolio/1.png";
+import portfolio2 from "../assets/project/portfolio/2.png";
+import portfolio3 from "../assets/project/portfolio/3.png";
+import portfolio4 from "../assets/project/portfolio/4.png";
 
 export default function PremiumProjects() {
   // Sample project data - you can replace this with your actual projects
@@ -10,7 +25,7 @@ export default function PremiumProjects() {
       tags: ["React", "Node.js", "MongoDB", "JWT"],
       liveLink: "#",
       codeLink: "https://github.com/devakumarr278/Alumni.git",
-      images: Array.from({ length: 10 }, (_, i) => `/src/assets/project/${i + 1}.png`)
+      images: [project1, project2, project3, project4, project5, project6, project7, project8, project9, project10]
     },
     {
       id: 2,
@@ -19,7 +34,7 @@ export default function PremiumProjects() {
       tags: ["React", "Firebase"],
       liveLink: "#",
       codeLink: "https://github.com/devakumarr278/Frontend_instaclone.git",
-      images: ["/src/assets/project/instaclone/insta.png"]
+      images: [instaclone]
     },
     {
       id: 3,
@@ -28,12 +43,7 @@ export default function PremiumProjects() {
       tags: ["React", "Tailwind"],
       liveLink: "#",
       codeLink: "https://github.com/devakumarr278/portfolio.git",
-      images: [
-        "/src/assets/project/portfolio/1.png",
-        "/src/assets/project/portfolio/2.png",
-        "/src/assets/project/portfolio/3.png",
-        "/src/assets/project/portfolio/4.png"
-      ]
+      images: [portfolio1, portfolio2, portfolio3, portfolio4]
     }
   ];
 

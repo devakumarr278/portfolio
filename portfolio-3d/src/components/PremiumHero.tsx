@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 import TypingRoles from "./TypingRoles";
+import profileImg from "../assets/prof.jpg";
 
 export default function PremiumHero() {
 
@@ -106,7 +107,7 @@ export default function PremiumHero() {
           >
             <div className="image-wrapper">
               <div className="image-bg"></div>
-              <img src="/src/assets/prof.jpg" alt="Deva Kumar" className="hero-image" />
+              <img src={profileImg} alt="Deva Kumar" className="hero-image" />
             </div>
           </Tilt>
         </motion.div>
