@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 const roles = [
   "Full Stack Developer",
   "Cyber Security Enthusiast",
-  "CTF Player",
 ];
 
 export default function TypingRoles() {

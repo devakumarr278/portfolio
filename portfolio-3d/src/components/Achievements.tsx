@@ -1,49 +1,57 @@
+import { useState } from "react";
+import { Award, MapPin, Trophy, Shield, Calendar } from "lucide-react";
 import rootwar from "../assets/achievement/rootwar.png";
 import binaryforge from "../assets/achievement/binaryforge.png";
 import hackathon from "../assets/achievement/hackathon.png";
 
 const achievements = [
   { 
-    title: "RootWar CTF Competition",
+    title: "RootWar CTF 2025",
+    location: "PSNA College of Engineering",
+    result: "Participant",
     domain: "Cyber Security • CTF",
-    description: "Participated in RootWar CTF 2025, solving real-world cyber security challenges including web exploitation, cryptography, and forensics.",
     year: "2025",
-    mode: "Team Event",
     type: "CTF",
     image: rootwar 
   },
   { 
-    title: "BinaryForge Hackathon",
-    domain: "Full Stack Development",
-    description: "Won 2nd place in the BinaryForge hackathon by building a secure web application with React and Node.js in 24 hours.",
-    year: "2024",
-    mode: "Individual",
-    type: "Hackathon",
+    title: "BinaryForge",
+    location: "PSG College of Technology",
+    result: "Top 10 Participants",
+    domain: "Cyber Security",
+    year: "2025",
+    type: "Cryptography",
     image: binaryforge 
   },
   { 
-    title: "Cyber Security Workshop",
-    domain: "Education • Networking",
-    description: "Attended an intensive workshop on ethical hacking and network security fundamentals, gaining hands-on experience with penetration testing tools.",
-    year: "2024",
-    mode: "Workshop",
-    type: "Learning",
+    title: "Mind Sprint 2K25",
+    location: "Potti SriRamalu College of Engineering",
+    result: "Participant",
+    domain: "Full Stack Development",
+    year: "2025",
+    type: "Hackathon",
     image: hackathon 
   }
 ];
 
 export default function Achievements() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <div className="right-content">
       <h2>Achievements</h2>
 
       <div className="flex flex-col gap-8 mt-6">
         {achievements.map((achievement, index) => (
-          <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-purple-500 hover:shadow-md hover:scale-[1.01] transition-all duration-300">
+          <div key={index} className="achievement-card bg-white rounded-2xl p-6 shadow-sm border-l-4 border-purple-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 hover:border-purple-600">
             
-            {/* Badge */}
+            {/* Trophy Accent Line */}
+            <div className="h-1 w-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full mx-auto mb-3" />
+
+            {/* Badge with Award Icon */}
             <div className="flex justify-end mb-2">
-              <span className="text-xs bg-purple-600 text-white px-3 py-1 rounded-full">
+              <span className="flex items-center gap-1 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-medium">
+                <Award className="w-3 h-3" />
                 {achievement.type}
               </span>
             </div>
@@ -53,9 +61,15 @@ export default function Achievements() {
               <img
                 src={achievement.image}
                 alt={achievement.title}
-                className="w-full max-w-md h-[200px] object-contain rounded-xl border shadow-sm"
+                onClick={() => setSelectedImage(achievement.image)}
+                className="w-full max-w-md h-[200px] object-contain rounded-xl border shadow-sm cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-purple-300 hover:shadow-lg"
               />
             </div>
+
+            {/* Click hint */}
+            <p className="text-xs text-gray-400 text-center mt-1">
+              Click image to view
+            </p>
 
             {/* Title */}
             <h3 className="text-xl font-semibold text-gray-800 text-center">
@@ -67,22 +81,67 @@ export default function Achievements() {
               {achievement.domain}
             </p>
 
-            {/* Description */}
-            <p className="text-gray-600 text-sm mt-4 leading-relaxed text-center max-w-xl mx-auto">
-              {achievement.description}
-            </p>
+            {/* Professional Info Grid - Icons on left, centered */}
+            <div className="mt-5 grid grid-cols-2 gap-4 text-sm text-gray-600">
+              <div className="flex items-center justify-center gap-2">
+                <MapPin className="w-4 h-4 text-purple-500" />
+                <span className="text-center">{achievement.location}</span>
+              </div>
+
+              <div className="flex items-center justify-center gap-2">
+                <Calendar className="w-4 h-4 text-purple-500" />
+                <span className="text-center">{achievement.year}</span>
+              </div>
+
+              <div className="flex items-center justify-center gap-2">
+                <Shield className="w-4 h-4 text-purple-500" />
+                <span className="text-center">{achievement.domain}</span>
+              </div>
+
+              <div className="flex items-center justify-center gap-2 font-semibold text-purple-600">
+                <Trophy className="w-4 h-4" />
+                <span className="text-center">{achievement.result}</span>
+              </div>
+            </div>
 
             {/* Footer */}
             <div className="flex justify-between items-center mt-6 text-xs text-gray-400">
               <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full">
                 {achievement.year}
               </span>
-              <span>{achievement.mode}</span>
+              <span>{achievement.result}</span>
             </div>
 
           </div>
         ))}
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="relative bg-white rounded-2xl p-4 max-w-3xl w-[90%] animate-scaleIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              className="absolute top-3 right-3 text-gray-500 hover:text-red-500 text-xl"
+              onClick={() => setSelectedImage(null)}
+            >
+              ✕
+            </button>
+
+            <img
+              src={selectedImage}
+              alt="Achievement"
+              className="w-full h-auto rounded-xl"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

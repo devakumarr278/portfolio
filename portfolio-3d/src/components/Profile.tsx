@@ -26,10 +26,10 @@ export default function Profile() {
         </div>
         <div>
           <h1
-            className="text-4xl font-bold tracking-wide"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="profile-name text-4xl font-bold tracking-wide"
+            style={{ fontFamily: "inherit" }}
           >
-            Deva Kumar
+            Deva <span>Kumar</span>
           </h1>
           <p className="mt-2 text-violet-600 text-sm tracking-wider">
             Full Stack Developer • Cyber Security

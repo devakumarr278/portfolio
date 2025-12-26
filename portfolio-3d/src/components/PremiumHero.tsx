@@ -3,12 +3,7 @@ import Tilt from "react-parallax-tilt";
 import TypingRoles from "./TypingRoles";
 
 export default function PremiumHero() {
-  const handleScrollToExplore = () => {    // Scroll to the next section (projects)
-    const projectsSection = document.getElementById("projects");
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
 
   return (
     <section className="hero">
@@ -88,7 +83,7 @@ export default function PremiumHero() {
               <a className="linkedin" href="https://linkedin.com/in/devakumar9" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a className="instagram" href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+              <a className="instagram" href="https://instagram.com/_d.e.v.a.a_" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-instagram"></i>
               </a>
             </div>
@@ -117,15 +112,11 @@ export default function PremiumHero() {
         </motion.div>
       </div>
 
-      <motion.div 
-        className="scroll-indicator"
-        onClick={handleScrollToExplore}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.9, delay: 1.2 }}
-      >
-        ↓ See my work
-      </motion.div>
+      <a href="#projects" className="scroll-down">
+        See my work ↓
+      </a>
+      <div className="hero-fade"></div>
+      <div className="bottom-effect"></div>
     </section>
   );
 }

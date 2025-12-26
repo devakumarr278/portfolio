@@ -1,15 +1,16 @@
 # Deva Kumar - 3D Portfolio
 
-A modern, interactive portfolio website showcasing my skills as a Full Stack MERN & Cyber Security enthusiast, built with React, Three.js, and Tailwind CSS featuring stunning 3D visualizations.
+A modern, interactive portfolio website showcasing my skills as a Full Stack Web Developer & Cyber Security enthusiast, built with React, TypeScript, and Tailwind CSS featuring stunning animations and 3D visualizations.
 
 ## 🚀 Tech Stack
 
-- **React** + **Vite** - Fast development environment
-- **Three.js** - 3D graphics library
-- **@react-three/fiber** - React renderer for Three.js
-- **@react-three/drei** - Useful helpers for Three.js
+- **React** + **TypeScript** - Type-safe development environment
+- **Vite** - Fast development environment
 - **Tailwind CSS** - Utility-first CSS framework
 - **Framer Motion** - Animation library for React
+- **react-parallax-tilt** - 3D tilt effect library
+- **react-icons** - Icon library
+- **lucide-react** - Icon library
 
 ## 📁 Project Structure
 
@@ -17,18 +18,24 @@ A modern, interactive portfolio website showcasing my skills as a Full Stack MER
 portfolio-3d/
 ├─ src/
 │  ├─ components/
-│  │  ├─ Hero3D.tsx
-│  │  ├─ ProfilePhoto.tsx
-│  │  ├─ About.tsx
-│  │  ├─ Skills3D.tsx
-│  │  ├─ SkillGallery.tsx
-│  │  ├─ SocialIcons.tsx
-│  │  ├─ CyberArena.tsx
-│  │  ├─ Projects.tsx
-│  │  ├─ Contact.tsx
-│  │  ├─ Navbar.tsx
+│  │  ├─ AboutLayout.tsx
+│  │  ├─ Achievements.tsx
+│  │  ├─ Certifications.tsx
+│  │  ├─ CustomCursor.tsx
+│  │  ├─ FadeUp.tsx
 │  │  ├─ Footer.tsx
-│  │  └─ LoadingScreen.tsx
+│  │  ├─ Header.tsx
+│  │  ├─ LoadingScreen.tsx
+│  │  ├─ Navbar.tsx
+│  │  ├─ PremiumContact.tsx
+│  │  ├─ PremiumHero.tsx
+│  │  ├─ PremiumProjects.tsx
+│  │  ├─ Profile.tsx
+│  │  ├─ ProfilePhoto.tsx
+│  │  ├─ Skills.tsx
+│  │  └─ TypingRoles.tsx
+│  ├─ pages/
+│  │  └─ About.tsx
 │  ├─ App.tsx
 │  ├─ main.tsx
 │  └─ style.css
@@ -43,48 +50,53 @@ portfolio-3d/
 
 - **Dark theme** with neon purple/blue accents
 - **Responsive design** for all device sizes
-- **Interactive 3D elements** in hero and skills sections
-- **Smooth animations** with Framer Motion
-- **Mobile-friendly navigation**
+- **Interactive animations** with Framer Motion
+- **Scroll-based reveal animations**
+- **Parallax tilt effects** on interactive elements
+- **Glassmorphism navbar** with glow effects
+- **Scroll progress indicator**
+- **Custom cursor effects**
 
 ## 🌟 Key Components
 
-### Hero Section
-- Floating 3D laptop model
-- Interactive auto-rotating scene
-- Animated text and call-to-action buttons
-- 3D floating profile photo with tilt effect
+### Premium Hero Section
+- Animated title with typing effect for roles
+- Interactive 3D tilt effect image
+- Social media links with hover animations
+- Resume download functionality
 
-### About Section
-- Personal bio and educational background
-- Focus areas and interests
+### About Layout
+- Tabbed interface for Profile, Skills, Achievements, and Certifications
+- Smooth transitions between sections
+- Scroll-spy navigation highlighting
+- Reveal animations on scroll
 
-### Skills Galaxy
-- Interactive 3D skill orbs representing programming languages, frameworks, and cyber security tools
-- Auto-rotating galaxy of skills
+### Profile Section
+- Personal information and bio
+- Educational background (CSE Cyber Security student at SKCET, Coimbatore)
+- Interests in full-stack web development and CTF challenges
 
-### Skills & Achievements Gallery
-- Interactive 3D cards for programming skills, cyber tools, and platform achievements
-- Animated numbers for solved problems/challenges
-- Hover effects with tilt and glow
+### Skills Section
+- Interactive skill tags with hover effects
+- Categorized by frontend, backend, tools, and cyber security
 
-### Cyber Arena
-- Interactive cyber security profile cards for PicoCTF and TryHackMe
-- Glowing borders with scan line animations
-- Radar pulse effects on hover
+### Achievements & Certifications
+- Showcase of accomplishments and certifications
+- Scroll-based reveal animations
 
-### Projects Holograms
-- Interactive hologram cards for showcased projects
-- Technology tags and links
+### Premium Projects
+- Featured projects with detailed descriptions
+- Technology tags and live demo links
 
-### Contact Section
-- Glowing orb that reveals contact form
-- Resume download button
+### Premium Contact
+- Contact form with validation
+- Direct email integration
+- Social media links
 
-### Social Connections
-- Interactive social media icons with 3D hover effects
-- Direct links to GitHub, LinkedIn, Instagram, PicoCTF, and TryHackMe
-- Color-coded icons with glow effects on hover
+### Navigation & Footer
+- Glassmorphism navbar with scroll effects
+- Scroll progress indicator
+- Custom footer with contact information and social links
 
 ## 🛠️ Installation
 
@@ -121,10 +133,10 @@ The portfolio is fully responsive and works on:
 
 ## 🎯 Performance
 
-- Optimized 3D rendering
-- Lazy loading components
-- Efficient animations
+- Optimized animations
+- Efficient component rendering
 - Minimal bundle size
+- Lazy loading where appropriate
 
 ## 📄 License
 
@@ -132,6 +144,6 @@ This project is licensed under the MIT License.
 
 ## 👤 Author
 
-Deva Kumar - Full Stack MERN & Cyber Security Enthusiast
+Deva Kumar - Full Stack Web Developer & Cyber Security Enthusiast
 
-2nd-year BE CSE student specializing in Cyber Security at Srikrishna College of Engineering and Technology, Coimbatore.
+CSE (Cyber Security) student at Srikrishna College of Engineering and Technology, Coimbatore.

@@ -9,86 +9,147 @@ export default function PremiumProjects() {
       description: "A centralized platform to connect alumni, manage profiles, post opportunities, and strengthen alumni–student interaction.",
       tags: ["React", "Node.js", "MongoDB", "JWT"],
       liveLink: "#",
-      codeLink: "#",
+      codeLink: "https://github.com/devakumarr278/Alumni.git",
       images: Array.from({ length: 10 }, (_, i) => `/src/assets/project/${i + 1}.png`)
+    },
+    {
+      id: 2,
+      title: "InstaClone",
+      description: "A social media clone inspired by Instagram with core UI and functionality.",
+      tags: ["React", "Firebase"],
+      liveLink: "#",
+      codeLink: "https://github.com/devakumarr278/Frontend_instaclone.git",
+      images: ["/src/assets/project/instaclone/insta.png"]
+    },
+    {
+      id: 3,
+      title: "Portfolio Website",
+      description: "My personal portfolio showcasing projects, skills, and achievements.",
+      tags: ["React", "Tailwind"],
+      liveLink: "#",
+      codeLink: "https://github.com/devakumarr278/portfolio.git",
+      images: [
+        "/src/assets/project/portfolio/1.png",
+        "/src/assets/project/portfolio/2.png",
+        "/src/assets/project/portfolio/3.png",
+        "/src/assets/project/portfolio/4.png"
+      ]
     }
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(1);
 
-  const moveSlide = (step: number, total: number) => {
-    setCurrentIndex((prevIndex) => (prevIndex + step + total) % total);
+  const [slideIndex, setSlideIndex] = useState<Record<number, number>>({});
+
+  const moveSlide = (projectId: number, step: number, total: number) => {
+    setSlideIndex(prev => ({
+      ...prev,
+      [projectId]: ((prev[projectId] ?? 0) + step + total) % total
+    }));
   };
 
   return (
     <section className="projects-section">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h1>
-        <p className="text-gray-600 mb-12 max-w-3xl">
+        <p className="text-gray-600 mb-12 max-w-3xl mx-auto text-center">
           Check out some of my recent projects that showcase my skills and passion for development.
         </p>
 
-        {projects.map((project) => (
-          <div className="project-card" key={project.id}>
-            {/* IMAGE SLIDER */}
-            <div className="slider">
-              <div 
-                className="slides" 
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-              >
-                {project.images.map((img, idx) => (
-                  <img 
-                    key={idx} 
-                    src={img} 
-                    alt={`Project slide ${idx + 1}`} 
-                  />
-                ))}
+        {projects.slice(0, visibleCount).map((project, index) => (
+            <div className={`project-card ${index % 2 !== 0 ? 'reverse' : ''}`} key={`project-${project.id}`}>
+              {/* IMAGE SLIDER */}
+              <div className="slider">
+                <div 
+                  className="slides" 
+                  style={{ transform: `translateX(-${(slideIndex[project.id] ?? 0) * 100}%)` }}
+                >
+                  {project.images.map((img, idx) => (
+                    <img 
+                      key={idx} 
+                      src={img} 
+                      alt={`Project slide ${idx + 1}`} 
+                    />
+                  ))}
+                </div>
+
+                {project.images.length > 1 && (
+                  <>
+                    <button 
+                      className="nav prev" 
+                      onClick={() => moveSlide(project.id, -1, project.images.length)}
+                    >
+                      ❮
+                    </button>
+                    <button 
+                      className="nav next" 
+                      onClick={() => moveSlide(project.id, 1, project.images.length)}
+                    >
+                      ❯
+                    </button>
+                  </>
+                )}
               </div>
 
-              <button 
-                className="nav prev" 
-                onClick={() => moveSlide(-1, project.images.length)}
-              >
-                ❮
-              </button>
-              <button 
-                className="nav next" 
-                onClick={() => moveSlide(1, project.images.length)}
-              >
-                ❯
-              </button>
+              {/* PROJECT CONTENT */}
+              <div className="project-info-card">
+                <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
+                <p className="text-gray-600 mb-6">
+                  {project.description}
+                </p>
+
+                <div className="tags mb-8">
+                  {project.tags.map((tag, idx) => (
+                    <span key={idx} className="tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="buttons">
+                  <button className="btn live">
+                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                      View Live
+                    </a>
+                  </button>
+                  <button className="btn code">
+                    <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
+                      Source Code
+                    </a>
+                  </button>
+                </div>
+              </div>
             </div>
-
-            {/* PROJECT CONTENT */}
-            <div className="project-content">
-              <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
-              <p className="text-gray-600 mb-6">
-                {project.description}
-              </p>
-
-              <div className="tags mb-8">
-                {project.tags.map((tag, idx) => (
-                  <span key={idx} className="tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="buttons">
-                <button className="btn live">
-                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                    View Live
-                  </a>
-                </button>
-                <button className="btn code">
-                  <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                    Source Code
-                  </a>
-                </button>
-              </div>
-            </div>
-          </div>
         ))}
+
+        {/* DOWN ARROW */}
+        {visibleCount < projects.length && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setVisibleCount(prev => prev + 1)}
+              className="text-3xl text-purple-600 hover:scale-110 transition animate-bounce"
+            >
+              ⌄
+            </button>
+          </div>
+        )}
+
+        {/* UP ARROW */}
+        {visibleCount === projects.length && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => {
+                setVisibleCount(1);
+                document.querySelector(".projects-section")?.scrollIntoView({
+                  behavior: "smooth"
+                });
+              }}
+              className="text-3xl text-purple-600 hover:scale-110 transition"
+            >
+              ⌃
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
